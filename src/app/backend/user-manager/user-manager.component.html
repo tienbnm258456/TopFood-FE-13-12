@@ -1,0 +1,83 @@
+<div id="layoutSidenav">
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+                <h1 class="mt-4">Tables</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a routerLink="/admin/dashboard">Admin</a></li>
+                    <li class="breadcrumb-item active">Quản lý người dùng</li>
+                </ol>
+
+                <div class="card mb-4">
+                    <div class="card-header"><i class="fas fa-table mr-1"></i>Bảng Thông Tin</div><br>
+
+                    <div class="input-group">
+                        <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" (input)="Search()" aria-describedby="basic-addon2" [(ngModel)]="name" /><br/> -->
+                        <input class="form-control" type="text" placeholder="Tìm kiếm ..." aria-label="Search"  /><br/>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- <button class="btn btn-success" style="float: right;" routerLink="/admin/add-category">Add Category</button><br><br> -->
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr class="table-dark">
+                                        <th>ID</th>
+                                        <th>Họ</th>
+                                        <th>Tên</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Giới tính</th>
+                                        <th>Email</th>
+                                        <th>Trạng thái</th>
+                                        <th>Quyền</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Ngày cập nhật</th>
+                                        <th colspan="3">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <!-- <tr *ngFor="let category of categorys | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize "> -->
+                                    <tr *ngFor="let user of users">
+                                        <th>{{user.id}}</th>
+                                        <th>{{user.firstName}}</th>
+                                        <th>{{user.lastName}}</th>
+                                        <th>{{user.phone}}</th>
+                                        <th>{{user.gender}}</th>
+                                        <th>{{user.email}}</th>
+                                        <th>{{user.status}}</th>
+                                        <th>{{user.roles[0].name}}</th>
+                                        <th>{{user.createDate}}</th>
+                                        <th>{{user.updateAt}}</th>
+                                        <!-- <th> <button class="btn btn-primary" routerLink="/admin/category/detail/{{category.id}}">Detail</button>
+                                        </th> -->
+                                         <th> <button class="btn btn-warning" routerLink="/admin/user/edit/{{user.id}}">Cập nhật</button>
+                                        </th>
+                                        <th><button class="btn btn-danger" (click)="delete(user.id)">Xóa</button>
+                                        </th> 
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+        <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination> -->
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                    <div>
+                        <a href="#">Privacy Policy</a> &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

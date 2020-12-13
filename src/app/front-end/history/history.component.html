@@ -1,0 +1,70 @@
+<div class="right__content">
+    <div class="front-end">
+        <app-header [count]="carts?carts.length:0"></app-header>
+
+        <div class="banner-top">
+            <div class="container">
+                <h3>Lịch sử mua hàng</h3>
+                <h4><a href="index.html">Trang chủ</a><label>/</label>Lịch sử mua hàng</h4>
+                <div class="clearfix"> </div>
+            </div>
+        </div><br><br>
+
+        <div class="px-4">
+            <div class="table-wrapper">
+
+                <div class="content-search">
+                    <label class="timkiem" style="float: left;  margin-left: 60px; margin-top: 5px;">Mã
+                        hóa đơn:</label>
+                    <input style="float: left; width: 20%; margin-left: 10px; " class="form-control"
+                        [(ngModel)]="history.order" type="text" placeholder="Tìm kiếm theo mã đơn hàng"
+                        aria-label="Search" />
+                    <th><button class="btn btn-search" (click)="getHistorys(userId, history.order)" style="float: left; margin: 0px 0px 5px 15px; height: 85%; width: 90%;   background: no-repeat padding-box #ff5722;
+                            box-shadow: 0 0 3px #00000029;
+                            border-radius: 8px;
+                            opacity: 1;
+                            text-align: left;
+                            letter-spacing: 0;
+                            color: #fff; ">Tìm kiếm</button></th>
+                </div><br>
+                <table class="table table-hover mb-0" style="width: 1400px; margin: 0 auto; font-size: 16px;">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="th-lg">Mã hóa đơn</th>
+                            <th class="th-lg">Tài khoản</th>
+                            <th class="th-lg">Tổng tiền</th>
+                            <th class="th-lg">Số lượng</th>
+                            <th class="th-lg">Ngày mua</th>
+                            <th class="th-lg">Tên khách hàng</th>
+                            <th class="th-lg">Mô tả</th>
+                            <th class="th-lg">Địa chỉ</th>
+                            <th class="th-lg">Số điện thoại</th>
+                            <th class="th-lg">Chi tiết đơn hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let history of historys">
+                            <td>{{history.orderId}}</td>
+                            <td>{{history.userName}}</td>
+                            <td>{{history.totalPrice | number}} đ</td>
+                            <td>{{history.countQuantity}}</td>
+                            <td>{{history.createdDate | date: 'dd-MM-yyyy hh:mm'}}</td>
+                            <td>{{history.name}}</td>
+                            <td>{{history.description}}</td>
+                            <td>{{history.address}}</td>
+                            <td>{{history.phone}}</td>
+                            <td data-label="Detail"><button routerLink="/history/detail/{{history.orderId}}"
+                                    style="margin-left: 30px;">
+                                    <img src="assets/icon/arrow-right-black.svg"
+                                        style="width: 40px; height: 30px; margin: 0 auto;"></button></td>
+                            <!-- <td data-label="Xoá" class="right__iconTable"><button data-toggle="modal" data-target="#myModal" (click)="delete(product.id)"><img src="assets/icon/icon-trash-black.svg"></button></td> -->
+                        </tr>
+                    </tbody>
+                </table><br />
+                <!-- <ngb-pagination [collectionSize]="historys.length" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="true"></ngb-pagination> -->
+            </div>
+        </div><br />
+        <br />
+        <app-footer></app-footer>
+    </div>
+</div>

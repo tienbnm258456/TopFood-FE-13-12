@@ -1,0 +1,25 @@
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Gửi phản hồi</p>
+    <div class="right__formWrapper">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="right__inputWrapper">
+                <label for="title">Tên khách hàng</label>
+                <input type="text" readonly = "true" name="productName" [(ngModel)]="report.name" placeholder="Tên khách hàng">
+            </div>
+            <div class="right__inputWrapper">
+                <label for="title">Email</label>
+                <input type="email" name="email" [(ngModel)]="email.email" placeholder="Email">
+            </div>
+            <div class="right__inputWrapper">
+                <label for="title">Chủ đề</label>
+                <input type="text" name="subject" [(ngModel)]="email.subject" placeholder="Chủ đề">
+            </div>
+            <div class="right__inputWrapper">
+                <label for="desc">Phản hồi</label>
+                <textarea name="body" [(ngModel)]="email.body" id="" cols="30" rows="10" placeholder="Phản hồi"></textarea>
+            </div>
+            <button class="btn" (click)="send()" type="submit">Gửi</button>
+        </form>
+    </div>
+</div>

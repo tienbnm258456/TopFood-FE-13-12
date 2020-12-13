@@ -1,0 +1,57 @@
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Hóa đơn chi tiét</p>
+    <div class="right__table">
+        <div class="right__tableWrapper">
+            <div class="content-search">
+                <input style="float: left; width: 88.5%; height: 38px;" class="form-control" [(ngModel)]="history.orderDetail"
+                    type="text" placeholder="Tìm kiếm theo mã đơn hàng chi tiết" aria-label="Search" />
+                <th><button class="btn btn-search" (click)="getHistoryDetails(history.orderDetail)" style="float: left; margin: 0px 0px 5px 15px; height: 85%; width: 90%;   background: no-repeat padding-box #ff5722;
+                        box-shadow: 0 0 3px #00000029;
+                        border-radius: 8px;
+                        opacity: 1;
+                        text-align: left;
+                        letter-spacing: 0;
+                        color: #fff; ">Tìm kiếm</button></th>
+            </div><br>
+            <table>
+                <thead>
+                    <tr>
+                            <th class="th-lg">Mã đơn hàng</th>
+                            <th class="th-lg">Mã đơn hàng chi tiết</th>
+                            <th class="th-lg">Tài khoản</th>
+                            <th class="th-lg">Tên sản phẩm</th>
+                            <th class="th-lg">Tổng tiền</th>
+                            <th class="th-lg">Số lượng</th>
+                            <th class="th-lg">Ngày mua</th>
+                            <th class="th-lg">Tên khách hàng</th>
+                            <th class="th-lg">Mô tả</th>
+                            <th class="th-lg">Địa chỉ</th>
+                            <th class="th-lg">Số điện thoại</th>
+                            <th class="th-lg">Quay lại</th>
+                            <!-- <th class="th-lg">Chi tiết đơn hàng</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let history of historyDetails">
+                            <td>{{history.orderId}}</td>
+                            <td>{{history.orderDetailId}}</td>
+                            <td>{{history.userName}}</td>
+                            <td>{{history.productName}}</td>
+                            <td>{{history.totalPrice}}</td>
+                            <td>{{history.countQuantity}}</td>
+                            <td>{{history.createdDate}}</td>
+                            <td>{{history.name}}</td>
+                            <td>{{history.description}}</td>
+                            <td>{{history.address}}</td>
+                            <td>{{history.phone}}</td>
+                            <td data-label="history"><button routerLink="/admin/history-manager">
+                                    <img src="assets/icon/icon-return.svg"
+                                        style="width: 40px; height: 30px; margin: 0 auto;"></button></td>
+                            <!-- <td data-label="Xoá" class="right__iconTable"><button data-toggle="modal" data-target="#myModal" (click)="delete(product.id)"><img src="assets/icon/icon-trash-black.svg"></button></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

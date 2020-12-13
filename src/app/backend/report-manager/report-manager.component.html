@@ -1,0 +1,33 @@
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Xem phản hồi</p>
+    <div class="right__table">
+        <div class="right__tableWrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên khách hàng</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Nội dung phản hồi</th>
+                        <th>Ngày gửi</th>
+                        <th>Trả lời</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let rep of reports ; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{rep.name}}</td>
+                        <td>{{rep.phone}}</td>
+                        <td>{{rep.email}}</td>
+                        <td>{{rep.problem}}</td>
+                        <td>{{rep.createDate | date: 'dd-MM-yyyy hh:mm'}}</td>
+                        <td data-label="Sửa" class="right__iconTable"><button routerLink="/admin/report/{{rep.id}}"><img src="assets/icon/icon-edit.svg"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

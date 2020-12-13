@@ -1,0 +1,102 @@
+<div class="login util">
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('assets/images/bg-01.jpg');">
+            <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                <form class="login100-form validate-form flex-sb flex-w" [formGroup]="form" #validateForm="ngForm">
+                    <span class="login100-form-title p-b-53">
+                        Đăng ký
+                    </span>
+
+                    <a href="#" class="btn-face m-b-20">
+                        <img alt="Facebook icon" style="height: 25px; width: 25px; margin-right: 10px;"
+                            src="assets/images/facebook.png" lazy="loaded">
+                        Facebook
+                    </a>
+
+                    <a href="#" class="btn-google m-b-20">
+                        <img src="assets/images/icon-google.png" alt="GOOGLE">
+                        Google
+                    </a>
+                    <div class="form-group">
+                        <label for="firstName">Họ Tên</label>
+                        <input type="text" formControlName="firstName" class="form-control"
+                        [(ngModel)]="user.firstName"
+                            (change)="checkValidateFirstName()" />
+                        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="invalid-feedback">
+                            {{firstName.errors?.required? 'Họ tên không được để trống' : ''}}
+                        </div><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Tên</label>
+                        <input type="text" formControlName="lastName" class="form-control"
+                        [(ngModel)]="user.lastName"
+                            (change)="checkValidateLastName()" />
+                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="invalid-feedback">
+                            {{lastName.errors?.required? 'Tên không được để trống' : ''}}
+                        </div><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">Tài khoản</label>
+                        <input type="text" formControlName="userName" class="form-control"
+                        [(ngModel)]="user.userName"
+                            (change)="checkValidateUserName()" />
+                        <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="invalid-feedback">
+                            {{userName.errors?.required? 'Tài khoản không được để trống' : ''}}
+                            {{userName.errors?.minlength? 'Tài khoản phải ít nhất 4 ký tự' : ''}}
+                            {{userName.errors?.maxlength? 'Tài khoản nhiều nhất là 11 ký tự' : ''}}
+                        </div><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" formControlName="email"
+                            class="form-control"  [(ngModel)]="user.email"
+                            (change)="checkValidateEmail()" />
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                            {{email.errors?.required? 'Email không được để trống' : ''}}
+                            {{email.errors?.pattern? 'Sai định dạng email: abc@gmail.com' : ''}}
+                        </div><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="text" formControlName="phone" class="form-control"
+                        [(ngModel)]="user.phone" (change)="checkValidatePhone()" />
+                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="invalid-feedback">
+                            {{phone.errors?.required? 'Số điện thoại không được để trống' : ''}}
+                        </div><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" formControlName="password" class="form-control"
+                            [(ngModel)]="user.password" (change)="checkValidatePassword()"
+                            [class.is-invalid]="password.invalid && (password.dirty || password.touched)" />
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                            {{password.errors?.required? 'Password không được để trống' : ''}}
+                            {{password.errors?.minlength? 'Mật khẩu quá ngắn! Vui lòng đặt mật
+                            khẩu từ 6-12 ký tự' : ''}}
+                            {{password.errors?.maxlength? 'Mật khẩu quá dài! Vui lòng đặt mật
+                            khẩu từ 6-12 ký tự' : ''}}
+                        </div><br>
+                    </div><br><br>
+                    <div *ngIf= "loading" class="sucess">
+                        Đăng ký tài khoản thành công!
+                    </div><br><br>
+                    <div class="container-login100-form-btn m-t-17">
+                        <button class="login100-form-btn" type="reset" (click)="onSubmit()" [disabled]="validateForm.invalid" href="javascript:void(0)">
+                            Đăng ký
+                        </button><br/>
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">Không hợp lệ !</div>
+                    <div class="w-full text-center p-t-55">
+                        <a routerLink="/home" class="txt2 bo1">
+                            Home
+                        </a>|
+                        <a routerLink="/login" class="txt2 bo1">
+                            Đăng nhập
+                        </a>
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

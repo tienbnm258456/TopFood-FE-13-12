@@ -1,0 +1,18 @@
+.form-control{
+    background-color: #edf2f4;
+    border-radius: 10px;
+    padding: 10px;
+    height: 60px;
+    width: 460px;
+}
+label{
+    margin-left: 3px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+.invalid-feedback {
+    color: red;
+}
+.sucess{
+    color: #90be6d;
+}

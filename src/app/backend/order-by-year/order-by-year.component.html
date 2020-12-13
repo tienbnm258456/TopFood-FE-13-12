@@ -1,0 +1,35 @@
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Danh sách hóa đơn năm</p>
+    <div class="right__table">
+        <div class="right__tableWrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID hóa đơn</th>
+                        <th>ID người dùng</th>
+                        <th>Tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Tổng hóa đơn</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    <tr *ngFor="let order of orders">
+                        <td>{{order.id}}</td>
+                        <td>{{order.userId}}</td>
+                        <td>{{order.name}}</td>    
+                        <td>{{order.phone}}</td>
+                        <td>{{order.address}}</td>
+                        <td>{{order.totalPrice}}</td>
+                        <td>{{order.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  
+</div>
+

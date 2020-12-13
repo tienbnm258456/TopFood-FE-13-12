@@ -1,0 +1,81 @@
+<div class="admin">
+    <div class="wrapper">
+        <div class="container">
+            <div class="dashboard">
+                <div class="left">
+                    <span class="left__icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <div class="left__content">
+                        <div class="left__logo">TOP FOOD +</div>
+                        <div class="left__profile">
+                            <div class="left__image"><img src="assets/images/logoxin.png" alt=""></div>
+                            <p class="left__name">Xin chào: {{username}}</p>
+                        </div>
+                        <ul class="left__menu">
+                            <li class="left__menuItem">
+                                <a routerLink="/admin/dashboard" class="left__title"><img
+                                        src="assets/icon/icon-dashboard.svg" alt="">Dashboard</a>
+                            </li>
+                            <li class="left__menuItem">
+                                <a routerLink="/admin/history-manager" class="left__title"><img
+                                        src="assets/icon/history.svg" alt="">Lịch sử bán hàng</a>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon/icon-tag.svg" alt="">Sản Phẩm<img
+                                        class="left__iconDown" src="assets/icon/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" routerLink="/admin/add-product">Thêm Sản Phẩm</a>
+                                    <a class="left__link" routerLink="/admin/manager">Xem Sản Phẩm</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon/icon-edit.svg" alt="">Loại Sản Phẩm<img
+                                        class="left__iconDown" src="assets/icon/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" routerLink="/admin/add-category">Thêm Loại Sản Phẩm</a>
+                                    <a class="left__link" routerLink="/admin/category-manager">Xem Loại Sản Phẩm</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon/icon-book.svg" alt="">Nhà Cung Cấp<img
+                                        class="left__iconDown" src="assets/icon/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" routerLink="/admin/add-supplier">Thêm Nhà Cung Cấp</a>
+                                    <a class="left__link" routerLink="/admin/supplier-manager">Xem Nhà Cung Cấp</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon/icon-user.svg" alt="">Phản hồi<img
+                                        class="left__iconDown" src="assets/icon/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" routerLink="/admin/send-email">Gửi Phản Hồi</a>
+                                    <a class="left__link" routerLink="/admin/report-manager">Xem Phản Hồi</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon/icon-user.svg" alt="">User<img
+                                        class="left__iconDown" src="assets/icon/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" routerLink="/admin/add-user">Chèn User</a>
+                                    <a class="left__link" routerLink="/admin/user-manager">Xem User</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <a routerLink="/login" class="left__title" (click)="logout()"><img
+                                        src="assets/icon/icon-logout.svg" alt="">Đăng Xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <router-outlet></router-outlet>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

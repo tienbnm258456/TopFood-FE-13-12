@@ -1,0 +1,61 @@
+<div class="login util"  [hidden] = "isLogin()">
+    <div class="limiter">
+     <div class="container-login100" style="background-image: url('assets/images/bg-01.jpg');">
+         <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+             <form  class="login100-form validate-form flex-sb flex-w" *ngIf="!isLoggedIn"
+             [formGroup]="form" #validateForm="ngForm">
+                 <span class="login100-form-title p-b-53">
+                     Đăng nhập
+                 </span>
+ 
+                 <a (click)= "loginFB()" class="btn-face m-b-20">
+                     <img alt="Facebook icon" style="height: 25px; width: 25px; margin-right: 10px;" src="assets/images/facebook.png" lazy="loaded">
+                     Facebook
+                 </a>
+ 
+                 <a (click)="loginGG()" class="btn-google m-b-20">
+                     <img src="assets/images/icon-google.png" alt="GOOGLE" >
+                     Google
+                 </a>
+                 
+                 <div class="form-group">
+                    <label for="userName">Tài khoản</label>
+                    <input type="text" formControlName="userName" class="form-control"  [(ngModel)]="user.userName"  
+                    (change)="checkValidateUserName()" />
+                    <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="invalid-feedback">
+                        {{userName.errors?.required? 'Tài khoản không được để trống' : ''}}
+                    </div><br>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" formControlName="password" class="form-control" [(ngModel)]="user.password" 
+                    (change)="checkValidatePassword()"
+                    [class.is-invalid]="password.invalid && (password.dirty || password.touched)"/>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                        {{password.errors?.required? 'Password không được để trống' : ''}}
+                    </div><br>
+                </div>
+              <a routerLink="/change-password" class="txt2 bo1 m-l-5">
+                    Đổi mật khẩu?
+                </a>
+                 <div class="container-login100-form-btn m-t-17">
+                     <button class="login100-form-btn" (click)="onSubmit()" [disabled]="validateForm.invalid" href="javascript:void(0)">
+                         Đăng nhập
+                     </button>
+                 </div>
+                 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">Sai tài khoản hoặc mật khẩu vui lòng nhập lại !</div>
+                 <div class="w-full text-center p-t-55">
+                     <span class="txt2">
+                        Chưa có tài khoản?
+                     </span>
+ 
+                     <a href="/register" class="txt2 bo1">
+                         Đăng ký ngay
+                     </a>
+                 </div>
+             </form>
+         </div>
+     </div>
+    </div>
+ </div>
+ 

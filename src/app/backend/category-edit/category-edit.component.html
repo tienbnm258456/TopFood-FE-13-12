@@ -1,0 +1,17 @@
+
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Chèn thể loại</p>
+    <div class="right__formWrapper">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="right__inputWrapper">
+                <label for="title">Tên danh mục</label>
+                 <input type="text" name="name" [(ngModel)]="category.categoryName" placeholder="Tên danh mục" formControlName="name"/>
+                        <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                            <div *ngIf="f.name.errors.required">Tên không được để trống</div>
+                        </div>
+            </div>
+            <button class="btn" type="submit" [disabled]="!form.valid">Lưu</button>
+        </form>
+    </div>
+</div>

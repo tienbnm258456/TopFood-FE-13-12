@@ -1,0 +1,73 @@
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Xem nhà cung cấp</p>
+    <div class="right__table">
+        <div class="right__tableWrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên nhà cung cấp</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày tạo</th>
+                        <th>Ngày cập nhật gần nhất</th>
+                        <th>Sửa</th>
+                        <th>Xoá</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let supplier of suppliers">
+                        <th>{{supplier.id}}</th>
+                        <th>{{supplier.supplierName}}</th>
+                        <th>{{supplier.status}}</th>
+                        <th>{{supplier.createDate}}</th>
+                        <th>{{supplier.updateAt}}</th>
+                        <td data-label="Sửa" class="right__iconTable"><button routerLink="/admin/supplier/edit/{{supplier.id}}"><img src="assets/icon/icon-edit.svg"></button></td>
+                        <td data-label="Xoá" class="right__iconTable"><button data-toggle="modal" data-target="#myModal" (click)="delete(supplier.id)"><img src="assets/icon/icon-trash-black.svg"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Bạn không thể xóa Supplier này</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Supplier này đang tồn tại ở Product</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Xóa Nhà Cung Cấp</h4>
+            </div>
+            <div class="modal-body">
+              <p>Bạn có thật sự muốn xóa không?</p>
+            </div>
+            <div class="modal-footer">
+              <button style="width: 20%;" type="button" class="btn btn-default" data-dismiss="modal" (click)="checkDelete()">Xóa</button>
+              <button style="width: 20%;" type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+</div>

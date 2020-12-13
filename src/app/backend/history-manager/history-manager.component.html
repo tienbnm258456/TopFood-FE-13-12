@@ -1,0 +1,84 @@
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Hóa đơn</p>
+    <div class="right__table">
+        <div class="right__tableWrapper">
+            <div class="content-search">
+                <input style="float: left; width: 88.5%; height: 38px;" class="form-control" [(ngModel)]="history.order"
+                    type="text" placeholder="Tìm kiếm theo mã đơn hàng" aria-label="Search" />
+                <th><button class="btn btn-search" (click)="getHistoryAlls(history.order)" style="float: left; margin: 0px 0px 5px 15px; height: 85%; width: 90%;   background: no-repeat padding-box #ff5722;
+                        box-shadow: 0 0 3px #00000029;
+                        border-radius: 8px;
+                        opacity: 1;
+                        text-align: left;
+                        letter-spacing: 0;
+                        color: #fff; ">Tìm kiếm</button></th>
+            </div><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã hóa đơn</th>
+                        <th>Tài khoản</th>
+                        <th>Tên khách hang</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Mô tả</th>
+                        <th>Ngày tạo</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Chi tiết</th>
+                        <th>Cập nhật trạng thái</th>
+                        <!-- <th>Xoá</th> -->
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let history of historys; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{history.orderId}}</td>
+                        <td>{{history.userName}}</td>
+                        <td>{{history.name}}</td>
+                        <td>{{history.address}}</td>
+                        <td>{{history.phone}}</td>
+                        <td>{{history.description}}</td>
+                        <td>{{history.createdDate | date: 'dd-MM-yyyy hh:mm'}}</td>
+                        <td>{{history.countQuantity}}</td>
+                        <td>{{history.totalPrice | number}}</td>
+                        <td>{{history.status}}</td>
+                        <td data-label="chiTiet" class="right__iconTable"><button data-toggle="modal"
+                                data-target="#myModal" routerLink="/admin/history-detail/{{history.orderId}}"><img
+                                    src="assets/icon/detail.svg"></button></td>
+                        <!-- <td data-label="Sửa" class="right__iconTable"><button><img
+                                    src="assets/icon/icon-edit.svg"></button></td> -->
+                        <td data-label="Sửa" class="right__iconTable"><button data-toggle="modal" data-target="#myModal"
+                                (click)="update(history.orderId)"><img src="assets/icon/icon-edit.svg"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sửa trạng thái</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có thật sự muốn sửa không?</p>
+                </div>
+                <div class="modal-footer">
+                    <button style="width: 20%;" type="button" class="btn btn-default" data-dismiss="modal"
+                        (click)="checkUpdate()">Sửa</button>
+                    <button style="width: 20%;" type="button" class="btn btn-default" data-dismiss="modal">Hủy
+                        bỏ</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

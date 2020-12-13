@@ -1,0 +1,150 @@
+<!-- <div id="layoutSidenav">
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+                <h1 class="mt-4">Bảng sản phẩm</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a routerLink="/admin/dashboard">Admin</a></li>
+                    <li class="breadcrumb-item active">Quản lí sản phẩm</li>
+                </ol>
+
+                <div class="card mb-4">
+
+                    <div class="input-group"> -->
+<!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" (input)="Search()" aria-describedby="basic-addon2" [(ngModel)]="name" /><br/> -->
+<!-- <input class="form-control" [(ngModel)]="product.productName" type="text" placeholder="Tìm kiếm ..." aria-label="Search" /><br/>
+                        <th><button class="btn btn-primary" (click)="searchProduct(product.productName)">Search</button></th>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-success" style="float: right;" routerLink="/admin/add-product">Thêm sản phẩm</button><br><br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr class="table-dark">
+                                        <th>ID</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Mô tả</th>
+                                        <th>Loại sản phẩm</th>
+                                        <th>Nhà cung cấp</th>
+                                        <th>Ảnh</th>
+                                        <th colspan="3">Hành động</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody> -->
+<!-- <tr *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize "> -->
+<!-- <tr *ngFor="let product of products">
+                                        <th>{{product.id}}</th>
+                                        <th>{{product.productName}}</th>
+                                        <th>{{product.price}}</th>
+                                        <th>{{product.description}}</th>
+                                        <th>{{product.category[0].categoryName}}</th>
+                                        <th>{{product.supplier[0].supplierName}}</th> 
+                                        <th><img src="data:image/jpeg;base64,{{product.priByte}}" width="300px" height="150px"></th>
+                                        <th><button class="btn btn-primary" routerLink="">Chi tiết</button></th>
+                                        <th><button class="btn btn-warning" routerLink="/admin/product/edit/{{product.id}}">Cập nhập</button></th>
+                                        <th><button class="btn btn-danger" (click)="delete(product.id)" >Xóa</button></th>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main> -->
+<!-- <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination> -->
+<!-- <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                    <div>
+                        <a href="#">Privacy Policy</a> &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div> -->
+
+<div class="right__content">
+    <div class="right__title">Bảng điều khiển</div>
+    <p class="right__desc">Xem sản phẩm</p>
+    <div class="right__table">
+        <div class="right__tableWrapper">
+            <div class="content-search">
+                <input style="float: left; width: 88.5%; height: 38px;" class="form-control" [(ngModel)]="product.productName"
+                    type="text" placeholder="Tìm kiếm theo tên sản phẩm" aria-label="Search" />
+                <th><button class="btn btn-search" (click)="searchProduct(product.productName)" style="float: left; margin: 0px 0px 5px 15px; height: 85%; width: 90%;   background: no-repeat padding-box #ff5722;
+                    box-shadow: 0 0 3px #00000029;
+                    border-radius: 8px;
+                    opacity: 1;
+                    text-align: left;
+                    letter-spacing: 0;
+                    color: #fff; ">Tìm kiếm</button></th>
+            </div><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá SP</th>
+                        <th>Mô tả</th>
+                        <th>Danh mục</th>
+                        <th>Nhà cung cấp</th>
+                        <th>Ảnh</th>
+                        <th>Sửa</th>
+                        <th>Xoá</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{product.id}}</td>
+                        <td>{{product.productName}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.category.categoryName}}</td>
+                        <td>{{product.supplier.supplierName}}</td>
+                        <th><img src="{{product.image}}" width="300px" height="150px"></th>
+                        <td data-label="Sửa" class="right__iconTable"><button
+                                routerLink="/admin/product/edit/{{product.id}}"><img
+                                    src="assets/icon/icon-edit.svg"></button></td>
+                        <td data-label="Xoá" class="right__iconTable"><button data-toggle="modal" data-target="#myModal"
+                                (click)="delete(product.id)"><img src="assets/icon/icon-trash-black.svg"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xóa Sản Phẩm</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có thật sự muốn xóa không?</p>
+                </div>
+                <div class="modal-footer">
+                    <button style="width: 20%;" type="button" class="btn btn-default" data-dismiss="modal"
+                        (click)="checkDelete()">Xóa</button>
+                    <button style="width: 20%;" type="button" class="btn btn-default" data-dismiss="modal">Hủy
+                        bỏ</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

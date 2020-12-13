@@ -1,0 +1,73 @@
+<div class="front-end">
+    <app-header></app-header>
+    <app-slide-run></app-slide-run><!-- /.carousel -->
+
+    <!--content-->
+    <div class="kic-top ">
+        <div class="container ">
+            <div class="kic ">
+                <h3>Danh mục phổ biến</h3>
+
+            </div>
+            <div class="col-md-3 kic-top1" *ngFor="let category of top4Category">
+                <a routerLink="/home/products/{{category.id}}">
+                    <img src="/assets/images/ki.jpg" class="img-responsive" alt="">
+                </a>
+                <h6>{{category.categoryName}}</h6>
+            </div>
+        </div>
+    </div>
+
+    <!--content-->
+    <div class="product">
+        <div class="container">
+            <div class="spec ">
+                <h3>Sản phẩm của chúng tôi</h3>
+                <div class="ser-t">
+                    <b></b>
+                    <span><i></i></span>
+                    <b class="line"></b>
+                </div>
+            </div>
+            <div class="right__tableWrapper">
+                <div class="content-search">
+                <input style="float: left; width: 30%; margin-left: 675px;" class="form-control" [(ngModel)]="product.productName" type="text" placeholder="Tìm kiếm ..." aria-label="Search" />
+                    <th><button class="btn btn-primary" (click)="searchProduct(product.productName)" style="float: left; margin: 0px 0px 5px 15px; height: 85%; width: 90%;   background: no-repeat padding-box #ff5722;
+                        box-shadow: 0 0 3px #00000029;
+                        border-radius: 8px;
+                        opacity: 1;
+                        text-align: left;
+                        letter-spacing: 0;
+                        color: #fff; ">Tìm Kiếm</button></th>
+                </div>
+            <div class="con-w3l agileinf">
+                <div class="col-md-3 pro-1" *ngFor="let product of products">
+                    <div class="col-m">
+						<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+							<img src="{{product.image}}" class="img-responsive" alt="">
+						</a>
+						<div class="mid-1">
+							<div class="women">
+								<h6><a href="single.html">{{product.productName}}</a></h6>
+							</div>
+							<div class="mid-2">
+								<p><label>{{product.price}}</label><em class="item_price">{{product.priceSale}} VNĐ</em></p>
+								<div class="block">
+									<div class="starbox small ghosting"> </div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="add add-2">
+								<button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
+									data-summary="summary 1" data-price="6.00" data-quantity="1"
+									data-image="assets/images/of16.png" (click) ="OnAddCart(product)">Thêm giỏ hàng</button>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

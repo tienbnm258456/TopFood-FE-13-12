@@ -1,0 +1,121 @@
+<div class="front-end">
+    <app-header [count]="carts?carts.length:0"></app-header>
+
+    <div class="banner-top">
+        <div class="container">
+            <h3>Giỏ hàng</h3>
+            <h4><a href="index.html">Trang chủ</a><label>/</label>Giỏ hàng</h4>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+    <div class="check-out">
+        <div class="container">
+            <div class="spec ">
+                <h3>Giỏ hàng của bạn</h3>
+                <div class="ser-t">
+                    <b></b>
+                    <span><i></i></span>
+                    <b class="line"></b>
+                </div>
+            </div>
+            <table class="table ">
+                <tr>
+                    
+                    <th class="t-head">Image</th>
+                    <th class="t-head head-it ">Tên sản phẩm</th>
+                    <th class="t-head">Giá</th>
+                    <th class="t-head">Số lượng</th>
+                    <th class="t-head">Thành tiền</th>
+                    <th class="t-head">Action</th>
+                </tr>
+                <tr class="cross" *ngFor="let cart of carts">
+                    
+                    <td class="ring-in t-data" style="width: 150px; height: 150px;">
+                            <img src="{{cart.image}}" class="img-responsive" alt="" style="width: 100%;height: 100%;">
+                        
+                    </td>
+                    <td>
+                    <div class="t-data">
+                        <h5>{{cart.productName}}</h5>
+                    </div>
+                    </td>
+                    <td class="t-data">{{cart.price}} &nbsp;VNĐ</td>
+                    <td class="t-data">
+                        <div class="quantity">
+                            <div class="quantity-select">
+                                <div class="entry value-minus" (click)="downAmount(cart.productId)">&nbsp;</div>
+                                <input class="entry value" id="count" [(ngModel)]="cart.quantity"
+                                    (ngModelChange)="cart.quantity=$event" />
+                                <div class="entry value-plus active" (click)="upAmount(cart.productId)">&nbsp;</div>
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td class="t-data t-w3l">{{cart.price * cart.quantity}}&nbsp;VNĐ</td>
+                    
+                    <td class="ring-in t-data" style="width: 150px; height: 150px;">
+                        <div class="clearfix"> </div>
+                        <div class="close1"> <button (click)="delete(cart.id)"><i class="fa fa-times"
+                                    aria-hidden="true"></i></button></div>
+                    </td>
+                </tr>
+            </table>
+            <div class="spec ">
+                <h4 class="text-left">Toltal Price : {{totalPrice}}&nbsp;VNĐ</h4>
+            </div>
+            <div class="spec ">
+                <button class=" add-1" style="float: left;" routerLink="/home">Tiếp tục mua sắm</button>
+                <button class="paypal-button" style="float: right;" (click)=paypal()>
+                    <span class="paypal-button-title">
+                       Thanh toán với
+                    </span>
+                    <span class="paypal-logo">
+                        <i>Pay</i><i>Pal</i>
+                    </span>
+                </button>
+                <button *ngIf="userId" class=" add-1" style="float: right;" data-toggle="modal"
+                    data-target="#myModal">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+
+
+    <app-footer></app-footer>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 75% !important">
+                <div class="modal-body">
+                    <h3 class="text-center">Thanh toán khi nhận hàng</h3>
+                    <br>
+                    <form [formGroup]="form">
+                        <div class="form-group">
+                            <label for="name">Tên người nhận hàng:</label>
+                            <input type="text" class="form-control" formControlName="name" [(ngModel)]="order.name"
+                                id="name" [ngClass]="{'has-error': hasFieldError('name')}">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại người nhận hàng:</label>
+                            <input type="tell" type="tel" formControlName="phone" [(ngModel)]="order.phone"
+                                [ngClass]="{'has-error': hasFieldError('phone')}" class="form-control" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ nhận hàng:</label>
+                            <input type="address" class="form-control" formControlName="address"
+                                [(ngModel)]="order.address" id="phone"
+                                [ngClass]="{'has-error': hasFieldError('address')}">
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <label for="description">Ghi chú:</label>
+                        <textarea class="form-control" [(ngModel)]="order.description" rows="5" id="note"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: none !important">
+                    <button class="btn btn-confirm" data-dismiss="modal" (click)="onSubmit()">Thanh toán</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
