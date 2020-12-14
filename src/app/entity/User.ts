@@ -12,5 +12,6 @@ export class User{
     status: number;
     createDate: Date;
     updateAt: Date;
+    // roleId : number;
     roles: Role[]
 }

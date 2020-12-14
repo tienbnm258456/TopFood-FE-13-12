@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InfoUser } from 'src/app/entity/InfoUser';
 import { totalUser } from 'src/app/entity/TotalUser';
+import { UpdateUser } from 'src/app/entity/UpdateUser';
 import { User } from 'src/app/entity/User';
 
 @Injectable({
@@ -28,9 +29,9 @@ export class UserService {
   //   return this.http.post(`${this.baseUrl}`,category);
   // }
 
-  updateUser(User: User): Observable<User>{  
-    return this.http.put<User>(`${this.baseUrl}/${User.id}`,User);
-    console.log(User);
+  updateUser(user:  UpdateUser): Observable<UpdateUser>{  
+    return this.http.put<UpdateUser>(`${this.baseUrl}/${user.id}`, user);
+    console.log(user);
     
   }
   updateInfoUser(id: number, user: InfoUser): Observable<InfoUser>{  
@@ -41,8 +42,8 @@ export class UserService {
     return this.http.get<User>(`${this.getUserUrl}?userId=${id}`);
   }
 
-  removeUser(User : User): Observable<User>{
-    return this.http.put<User>(`${this.baseUrl}/${User.id}`,User)
+  removeUser(id : Number, userName : String): Observable<User>{
+    return this.http.delete<User>(`${this.baseUrl}/${id}?userName=${userName}`)
   }
   public totalUser(): Observable<totalUser> {
     return this.http.get<totalUser>(`${this.totalUserUrl}`);

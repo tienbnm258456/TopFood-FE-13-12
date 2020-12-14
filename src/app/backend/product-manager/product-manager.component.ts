@@ -44,6 +44,9 @@ export class ProductManagerComponent implements OnInit {
   }
 
   searchProduct(productName: any) {
+    if(productName == null){
+      this.getProducts();
+    }
     this.productService.search(productName).subscribe(result => {
       if (result) {
         this.products = result;

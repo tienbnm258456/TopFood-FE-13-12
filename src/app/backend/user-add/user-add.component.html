@@ -1,0 +1,69 @@
+<div id="layoutSidenav">
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+                <h1 class="mt-4">Edit User</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a routerLink="/admin/dashboard">Admin</a></li>
+                    <li class="breadcrumb-item active">Edit User</li>
+                </ol>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form *ngIf="user" [formGroup]="form" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label>Họ</label>
+                                <input type="text" class="form-control" name="fname" [(ngModel)]="user.firstName" formControlName="fname" (change)="checkValidateFirstName()"/>
+                                <div *ngIf="f.fname.touched && f.fname.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.fname.errors.required">Họ không được để trống</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Tên</label>
+                                <input type="text" class="form-control" name="lname" [(ngModel)]="user.lastName" formControlName="lname" (change)="checkValidateLastName()"/>
+                                <div *ngIf="f.lname.touched && f.lname.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.lname.errors.required">Tên không được để trống</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Tài khoản</label>
+                                <input type="text" class="form-control" name="uname" [(ngModel)]="user.userName" formControlName="uname" (change)="checkValidateUserName()"/>
+                                <div *ngIf="f.uname.touched && f.uname.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.uname.errors.required">Tài khoản không được để trống</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="text" class="form-control" name="password" [(ngModel)]="user.password" formControlName="password" (change)="checkValidatePassword()"/>
+                                <div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.password.errors.required">Mật Khẩu không được để trống</div>
+                                    <div *ngIf="f.password.errors.min">Mật Khẩu ít nhất 6 ký tự</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone" formControlName="phone" (change)="checkValidatePhone()"/>
+                                <div *ngIf="f.phone.touched && f.phone.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.phone.errors.required">Số điện thoại không được để trống</div>
+                                    <div *ngIf="f.phone.errors.pattern">Số điện thoại không đúng</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email" [(ngModel)]="user.email" formControlName="email" (change)="checkValidateEmail()"/>
+                                <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.email.errors.pattern">Email sai định dạng</div>
+                                    <div *ngIf="f.email.errors.required">Email không được để trống</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                
+
+            </div>
+        </main>
+
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UpdateUser } from 'src/app/entity/UpdateUser';
 import { User } from 'src/app/entity/User';
 import { UserService } from 'src/app/service/user/user.service';
 
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/service/user/user.service';
 })
 export class UserEditComponent implements OnInit {
 
-  user: User;
+  user: UpdateUser;
   form = new FormGroup({
     fname: new FormControl('',Validators.required),
     lname: new FormControl('',Validators.required),
